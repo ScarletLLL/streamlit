@@ -3,7 +3,6 @@ import streamlit as st
 import os 
 import pandas as pd 
 import matplotlib.pyplot as plt 
-import seaborn as sns 
 from langchain_experimental.agents import create_pandas_dataframe_agent 
 from langchain_openai import OpenAI
 
