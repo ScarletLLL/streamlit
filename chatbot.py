@@ -29,12 +29,15 @@ if prompt := st.chat_input():
     # Initializing the agent 
     # We have kept verbose= True. It will print all the intermediate steps during the execution.
     model_name="gpt-3.5-turbo-instruct"
-    agent = create_pandas_dataframe_agent(OpenAI(temperature=0,model=model_name), df, verbose=True) 
+    agent = create_pandas_dataframe_agent(OpenAI(temperature=0,model=model_name), df_model, verbose=True) 
     #client = OpenAI(api_key=openai_api_key)
     st.session_state.messages.append({"role": "user", "content": prompt})
     st.chat_message("user").write(prompt)
     #response = client.chat.completions.create(model="gpt-3.5-turbo", messages=st.session_state.messages)
-    response=agent（st.session_state.messages）
+    response=agent（prompt）
     msg = response
     st.session_state.messages.append({"role": "assistant", "content": msg})
+    st.write(st.session_state.messages)
     st.chat_message("assistant").write(msg)
+    
+ 
