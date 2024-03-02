@@ -34,10 +34,10 @@ if prompt := st.chat_input():
     st.session_state.messages.append({"role": "user", "content": prompt})
     st.chat_message("user").write(prompt)
     #response = client.chat.completions.create(model="gpt-3.5-turbo", messages=st.session_state.messages)
-    response=agent（prompt）
-    msg = response
-    st.session_state.messages.append({"role": "assistant", "content": msg})
+    ##response=agent（prompt）
+    ##msg = response
+    ##st.session_state.messages.append({"role": "assistant", "content": msg})
     st.write(st.session_state.messages)
-    st.chat_message("assistant").write(msg)
-    
+    ##st.chat_message("assistant").write(msg)
+    st.write(prompt)
  
