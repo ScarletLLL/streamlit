@@ -12,4 +12,8 @@ PyPDF2
 numpy
 openpyxl
 matplotlib
-openai 
+os 
+matplotlib
+seaborn
+langchain_experimental
+langchain_openai 
