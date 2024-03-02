@@ -2,15 +2,13 @@ from openai import OpenAI
 import streamlit as st
 from langchain_experimental.agents import create_pandas_dataframe_agent 
 from langchain_openai import OpenAI
+import os
 
 with st.sidebar:
     openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
 
 st.title("FinInv Chatbot")
 st.caption("A financial chatbot powered by OpenAI LLM")
-
-# Importing the data
-df_model = pd.read_csv('df_model.csv') 
 
 # Chatbot
 if "messages" not in st.session_state:
@@ -25,10 +23,12 @@ if prompt := st.chat_input():
         st.stop()
 
 
-
+    # Importing the data
+    df_model = pd.read_csv('df_model.csv') 
     # Initializing the agent 
     # We have kept verbose= True. It will print all the intermediate steps during the execution.
     model_name="gpt-3.5-turbo-instruct"
+    os.environ['OPENAI_API_KEY']=openai_api_key
     agent = create_pandas_dataframe_agent(OpenAI(temperature=0,model=model_name), df_model, verbose=True) 
     #client = OpenAI(api_key=openai_api_key)
     st.session_state.messages.append({"role": "user", "content": prompt})

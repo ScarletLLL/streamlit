@@ -5,3 +5,4 @@ watchdog
 pytest
 langchain_experimental
 langchain_openai
+os
